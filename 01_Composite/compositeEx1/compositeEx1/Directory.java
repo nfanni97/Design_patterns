@@ -15,6 +15,11 @@ public class Directory extends Item {
     }
 
     @Override
+    public void remove(Item item) {
+        includedFiles.remove(item);
+    }
+
+    @Override
     public void ls() {
         System.out.println(CompositeDemo.compositeBuilder + getName());
         CompositeDemo.compositeBuilder.append("   ");
