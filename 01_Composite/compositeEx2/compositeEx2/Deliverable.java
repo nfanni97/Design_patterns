@@ -12,11 +12,6 @@ public class Deliverable extends Component {
     }
 
     @Override
-    public double getTimeNeeded() {
-        return 0;
-    }
-
-    @Override
     public String getDescription(int level) {
         String prefix = "\t".repeat(level);
         return prefix + "DELIVERABLE: " + name + "\n";

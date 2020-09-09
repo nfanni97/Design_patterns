@@ -5,7 +5,9 @@ public abstract class Component {
     public void addProjectItem(Component component) {
     }
 
-    public abstract double getTimeNeeded();
+    public double getTimeNeeded() {
+        return 0;
+    }
 
     public String getDescription() {
         return getDescription(0);

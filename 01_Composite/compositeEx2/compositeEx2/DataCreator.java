@@ -1,4 +1,6 @@
 package compositeEx2;
+import compositeEx2.contacts.*;
+import compositeEx2.projectItems.*;
 
 class DataCreator{    
     static Project createData(){
