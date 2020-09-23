@@ -4,6 +4,13 @@ import java.util.List;
 public class StudentDaoImplMemory implements StudentDao {
     private ArrayList<Student> db = new ArrayList<>();
 
+    public StudentDaoImplMemory() {
+        db.add(new Student(23,"Fanni"));
+        db.add(new Student(22,"Petra"));
+        db.add(new Student(24,"Balázs"));
+        db.add(new Student(11,"Dorci"));
+    }
+
     @Override
     public List<Student> getAllStudents() {
         return db;
