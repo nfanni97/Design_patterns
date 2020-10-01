@@ -1,5 +1,7 @@
 package visitor;
 
+import tree.Addition;
+import tree.Multiplication;
 import tree.Node;
 import tree.Number;
 import tree.Operator;
@@ -9,7 +11,7 @@ public class PrintingVisitor implements Visitor {
 
     @Override
     public void visitNumber(Number n) {
-        toPrint += n.toString();
+        toPrint += n.getValue();
     }
 
     @Override
@@ -19,7 +21,21 @@ public class PrintingVisitor implements Visitor {
 
     @Override
     public void visitOperator(Operator o) {
-        o.infixIteration((Node n) -> toPrint += n.toString());
+        o.infixIteration(this);
     }
 
+    @Override
+    public void processNumber(Number n) {
+        visitNumber(n);
+    }
+
+    @Override
+    public void processAddition(Addition a) {
+        toPrint += "+";
+    }
+
+    @Override
+    public void processMultiplication(Multiplication m) {
+        toPrint += "*";
+    }
 }

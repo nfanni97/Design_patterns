@@ -8,7 +8,16 @@ public class Multiplication extends Operator {
     }
 
     @Override
-    public String getStringRepresentation() {
-        return "*";
+    public void infixIteration(Visitor v) {
+        children.get(Node.direction.LEFT).infixIteration(v);
+        v.processMultiplication(this);
+        children.get(Node.direction.RIGHT).infixIteration(v);
+    }
+
+    @Override
+    public void postfixIteration(Visitor v) {
+        children.get(Node.direction.LEFT).postfixIteration(v);
+        children.get(Node.direction.RIGHT).postfixIteration(v);
+        v.processMultiplication(this);
     }
 }

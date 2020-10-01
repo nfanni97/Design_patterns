@@ -16,16 +16,13 @@ public abstract class Node {
 
     // remove not needed
 
-    public Node getChild(direction d) throws NotSupportedOperationException {
+    public Node getChild(direction d) {
         return null;
     }
 
     //accept
     public abstract void iterate(Visitor v);
 
-    public abstract String getStringRepresentation();
-
-    //forEach-like
-    //source: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html#forEach-java.util.function.Consumer-
-    public abstract void infixIteration(Consumer<? super Node> action);
+    public abstract void infixIteration(Visitor v);
+    public abstract void postfixIteration(Visitor v);
 }

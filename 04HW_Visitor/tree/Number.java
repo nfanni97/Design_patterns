@@ -12,14 +12,13 @@ public class Number extends Node {
         value = v;
     }
 
-    @Override
-    public void addNode(Node left, Node right) throws NotSupportedOperationException {
-        throw new NotSupportedOperationException("this is a leaf node");
+    public int getValue() {
+        return value;
     }
 
     @Override
-    public String getStringRepresentation() {
-        return String.valueOf(value);
+    public void addNode(Node left, Node right) throws NotSupportedOperationException {
+        throw new NotSupportedOperationException("this is a leaf node");
     }
 
     @Override
@@ -28,8 +27,14 @@ public class Number extends Node {
     }
 
     @Override
-    public void infixIteration(Consumer<? super Node> action) {
+    public void infixIteration(Visitor v) {
         //leaf -> no iteration to do
-        action.accept(this);
+        v.processNumber(this);
+    }
+
+    @Override
+    public void postfixIteration(Visitor v) {
+        //leaf -> no iteration to do
+        v.processNumber(this);
     }
 }

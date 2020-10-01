@@ -20,19 +20,12 @@ public abstract class Operator extends Node {
     }
 
     @Override
-    public Node getChild(Node.direction d) throws NotSupportedOperationException {
+    public Node getChild(Node.direction d) {
         return children.get(d);
     }
 
     @Override
     public void iterate(Visitor v) {
         v.visitOperator(this);
-    }
-
-    @Override
-    public void infixIteration(Consumer<? super Node> action) {
-        children.get(Node.direction.LEFT).infixIteration(action);
-        action.accept(this);
-        children.get(Node.direction.RIGHT).infixIteration(action);
     }
 }
