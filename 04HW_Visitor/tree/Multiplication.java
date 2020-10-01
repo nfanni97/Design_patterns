@@ -8,7 +8,7 @@ public class Multiplication extends Operator {
     }
 
     @Override
-    public String toString() {
+    public String getStringRepresentation() {
         return "*";
     }
 }

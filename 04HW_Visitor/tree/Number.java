@@ -18,7 +18,7 @@ public class Number extends Node {
     }
 
     @Override
-    public String toString() {
+    public String getStringRepresentation() {
         return String.valueOf(value);
     }
 
