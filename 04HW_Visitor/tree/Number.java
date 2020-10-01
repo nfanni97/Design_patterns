@@ -22,19 +22,14 @@ public class Number extends Node {
     }
 
     @Override
-    public void iterate(Visitor v) {
-        v.visitNumber(this);
-    }
-
-    @Override
     public void infixIteration(Visitor v) {
         //leaf -> no iteration to do
-        v.processNumber(this);
+        v.visitNumber(this);
     }
 
     @Override
     public void postfixIteration(Visitor v) {
         //leaf -> no iteration to do
-        v.processNumber(this);
+        v.visitNumber(this);
     }
 }

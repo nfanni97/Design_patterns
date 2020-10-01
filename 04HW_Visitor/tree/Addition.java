@@ -10,7 +10,7 @@ public class Addition extends Operator {
     @Override
     public void infixIteration(Visitor v) {
         children.get(Node.direction.LEFT).infixIteration(v);
-        v.processAddition(this);
+        v.visitAddition(this);
         children.get(Node.direction.RIGHT).infixIteration(v);
     }
 
@@ -18,6 +18,6 @@ public class Addition extends Operator {
     public void postfixIteration(Visitor v) {
         children.get(Node.direction.LEFT).postfixIteration(v);
         children.get(Node.direction.RIGHT).postfixIteration(v);
-        v.processAddition(this);
+        v.visitAddition(this);
     }
 }

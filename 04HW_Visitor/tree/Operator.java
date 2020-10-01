@@ -23,9 +23,4 @@ public abstract class Operator extends Node {
     public Node getChild(Node.direction d) {
         return children.get(d);
     }
-
-    @Override
-    public void iterate(Visitor v) {
-        v.visitOperator(this);
-    }
 }

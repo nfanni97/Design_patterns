@@ -6,9 +6,9 @@ import java.util.LinkedList;
 import tree.Addition;
 import tree.Multiplication;
 import tree.Number;
-import tree.Operator;
 
 public class CalculatingVisitor implements Visitor {
+    //based on invers Polish notation
     private Deque<Integer> operands = new LinkedList<>();
 
     @Override
@@ -17,29 +17,19 @@ public class CalculatingVisitor implements Visitor {
     }
 
     @Override
-    public void visitOperator(Operator o) {
-        o.postfixIteration(this);
-    }
-
-    @Override
     public void printResult() {
         System.out.println("Result of iteration: " + String.valueOf(operands.pop()));
     }
 
     @Override
-    public void processNumber(Number n) {
-        visitNumber(n);
-    }
-
-    @Override
-    public void processAddition(Addition a) {
+    public void visitAddition(Addition a) {
         int first = operands.pop();
         int second = operands.pop();
         operands.push(first+second);
     }
 
     @Override
-    public void processMultiplication(Multiplication m) {
+    public void visitMultiplication(Multiplication m) {
         int first = operands.pop();
         int second = operands.pop();
         operands.push(first*second);

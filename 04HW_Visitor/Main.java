@@ -11,11 +11,11 @@ public class Main {
         Node tree = new Addition(new Number(3), new Multiplication(new Number(5), new Number(6)));
 
         Visitor printer = new PrintingVisitor();
-        tree.iterate(printer);
+        tree.infixIteration(printer);
         printer.printResult();
 
         Visitor calculator = new CalculatingVisitor();
-        tree.iterate(calculator);
+        tree.postfixIteration(calculator);
         calculator.printResult();
     }
 }

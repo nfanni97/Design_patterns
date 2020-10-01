@@ -20,22 +20,12 @@ public class PrintingVisitor implements Visitor {
     }
 
     @Override
-    public void visitOperator(Operator o) {
-        o.infixIteration(this);
-    }
-
-    @Override
-    public void processNumber(Number n) {
-        visitNumber(n);
-    }
-
-    @Override
-    public void processAddition(Addition a) {
+    public void visitAddition(Addition a) {
         toPrint += "+";
     }
 
     @Override
-    public void processMultiplication(Multiplication m) {
+    public void visitMultiplication(Multiplication m) {
         toPrint += "*";
     }
 }

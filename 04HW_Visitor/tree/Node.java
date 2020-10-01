@@ -20,9 +20,6 @@ public abstract class Node {
         return null;
     }
 
-    //accept
-    public abstract void iterate(Visitor v);
-
     public abstract void infixIteration(Visitor v);
     public abstract void postfixIteration(Visitor v);
 }
