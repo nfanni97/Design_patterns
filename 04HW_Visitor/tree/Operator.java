@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.HashMap;
+import java.util.function.Consumer;
 
 import exceptions.NotSupportedOperationException;
 import visitor.Visitor;
@@ -26,5 +27,12 @@ public abstract class Operator extends Node {
     @Override
     public void iterate(Visitor v) {
         v.visitOperator(this);
+    }
+
+    @Override
+    public void infixIteration(Consumer<? super Node> action) {
+        children.get(Node.direction.LEFT).infixIteration(action);
+        action.accept(this);
+        children.get(Node.direction.RIGHT).infixIteration(action);
     }
 }

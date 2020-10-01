@@ -11,5 +11,6 @@ public class Main {
 
         Visitor printing = new PrintingVisitor();
         tree.iterate(printing);
+        printing.printResult();
     }
 }

@@ -1,5 +1,7 @@
 package tree;
 
+import java.util.function.Consumer;
+
 import exceptions.NotSupportedOperationException;
 import visitor.Visitor;
 
@@ -23,5 +25,11 @@ public class Number extends Node {
     @Override
     public void iterate(Visitor v) {
         v.visitNumber(this);
+    }
+
+    @Override
+    public void infixIteration(Consumer<? super Node> action) {
+        //leaf -> no iteration to do
+        action.accept(this);
     }
 }

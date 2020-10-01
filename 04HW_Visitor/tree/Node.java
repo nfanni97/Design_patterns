@@ -1,5 +1,7 @@
 package tree;
 
+import java.util.function.Consumer;
+
 import exceptions.NotSupportedOperationException;
 import visitor.Visitor;
 
@@ -20,4 +22,8 @@ public abstract class Node {
 
     //accept
     public abstract void iterate(Visitor v);
+
+    //forEach-like
+    //source: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html#forEach-java.util.function.Consumer-
+    public abstract void infixIteration(Consumer<? super Node> action);
 }
