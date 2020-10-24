@@ -12,6 +12,6 @@ public abstract class AbstractLayer {
         bottomNeighbor = layer;
     }
 
-    public abstract String packMessage(String message, String encryptionKey);
-    public abstract String unpackMessage(String message, String encryptionKey);
+    public abstract String packMessage(String message);
+    public abstract String unpackMessage(String message);
 }

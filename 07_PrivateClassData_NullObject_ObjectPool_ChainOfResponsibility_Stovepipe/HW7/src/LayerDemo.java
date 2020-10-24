@@ -7,7 +7,8 @@ public class LayerDemo {
     public static void main(String[] args) {
         // create layers
         ApplicationLayer app = new ApplicationLayer();
-        EncryptionLayer encrypt = new EncryptionLayer();
+        String key = "super key";
+        EncryptionLayer encrypt = new EncryptionLayer(key);
         TCPLayer tcp = new TCPLayer();
         EthernetLayer ethernet = new EthernetLayer();
 
@@ -21,13 +22,12 @@ public class LayerDemo {
 
         // send message in application layer
         String message = "Hi there!";
-        String key = "superKey";
-        String packedMessage = app.packMessage(message, key);
+        String packedMessage = app.packMessage(message);
         System.out.println("original message: " + message);
         System.out.println("packed message: " + packedMessage);
 
         // receive message in ethernet layer
-        String unpackedMessage = ethernet.unpackMessage(packedMessage, key);
+        String unpackedMessage = ethernet.unpackMessage(packedMessage);
         System.out.println("unpacked message: " + unpackedMessage);
     }
 }
