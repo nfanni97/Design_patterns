@@ -9,14 +9,16 @@ public class SyncSample extends Thread
 	
 	public void run(){
 		// Melyik működik a négy közül, melyik nem és miért?
+		//"this" never works, because we're syncing on the current thread object, instead of something associated with "i"
+		// outher monitor doesn't work because then one thread will hog the resources -> no concurrency
 		// synchronized (this)
-		 //synchronized (monitor)
+		//  synchronized (monitor)
 		{
 			while(true){
 				// synchronized (this) 
-				 //synchronized (monitor)
+				 synchronized (monitor)
 				{
-					//System.out.println(id);
+					// System.out.println(id);
 					i++;
 					i++;		
 				}
