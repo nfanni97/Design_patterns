@@ -8,12 +8,12 @@ public class Complex {
     private double re;
     private double im;
 
-    public void set(double re, double im) {
+    public synchronized void set(double re, double im) {
         this.re = re;
         this.im = im;
     }
 
-    public double[] get() {
+    public synchronized double[] get() {
         double[] result = {re, im};
         return result;
     }
