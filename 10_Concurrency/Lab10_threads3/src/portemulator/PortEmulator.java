@@ -5,25 +5,25 @@ import java.util.*;
 /**
  * Port emulátor
  * 
- * Néha véletlenszerűen betesz adatokat a sorába, amiket ki lehet venni.
- * Hasonló ahhoz, mintha egy hálózati kapcsolatunk lenne, ahonnan néha jönnek adatok.
+ * Néha véletlenszerűen betesz adatokat a sorába, amiket ki lehet venni. Hasonló
+ * ahhoz, mintha egy hálózati kapcsolatunk lenne, ahonnan néha jönnek adatok.
  */
-public class PortEmulator extends Thread
-{
-	//Egy másodpercben ilyen valószínűséggel generálódik adat
-	float probability; 
-	
+public class PortEmulator extends Thread {
+	// Egy másodpercben ilyen valószínűséggel generálódik adat
+	float probability;
+
 	// A sorunk
 	Queue<Integer> queue = new LinkedList<Integer>();
-	
-	public void run(){
+
+	public void run() {
 		Random generator = new Random();
-		
-		while (true){
+
+		while (true) {
 			int s = generator.nextInt(100);
-			if (s < probability*100){
-				synchronized (queue) {
+			if (s < probability * 100) {
+				synchronized (this) {
 					queue.offer(generator.nextInt(1000));
+					notifyAll();
 				}
 			}
 			try {
@@ -33,23 +33,23 @@ public class PortEmulator extends Thread
 			}
 		}
 	}
-	
-	public PortEmulator(float p){
+
+	public PortEmulator(float p) {
 		probability = p;
 		start();
 	}
-	
-	public boolean isEmpty(){
-		synchronized (queue) {
+
+	public boolean isEmpty() {
+		synchronized(queue) {
 			return queue.isEmpty();
 		}
 	}
-	
-	public int get(){
-		synchronized (queue) {
-			return queue.poll();
+
+	public int get() {
+		synchronized(queue) {
+		int toreturn = queue.poll();
+		return toreturn;
 		}
 	}
-	
-	
+
 }
