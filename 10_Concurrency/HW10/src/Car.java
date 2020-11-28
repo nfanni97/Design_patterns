@@ -2,8 +2,6 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 public class Car extends Thread {
-    // TODO: car only locks until it goes into intersection (so that light can
-    // change when it's in there as well)
     private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
     private int id;
     private Intersection intersection;
